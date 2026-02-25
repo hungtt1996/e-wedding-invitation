@@ -200,16 +200,15 @@ const fetchWishes = async (page = 1) => {
     container.innerHTML = '<div class="text-center text-secondary py-3">Đang tải lời chúc...</div>';
 
     try {
-        // Get total count for pagination
-        const snapshotCount = await getCountFromServer(wishesCol);
-        const totalCount = snapshotCount.data().count;
-
-        // Fetch wishes
-        let q = query(wishesCol, orderBy("createdAt", "desc"), limit(PAGE_SIZE));
-        
-        // Handle pagination logic (simplified for small data)
+        // Fetch all wishes ordered by date
+        const q = query(wishesCol, orderBy("createdAt", "desc"));
         const snapshot = await getDocs(q);
-        const wishes = snapshot.docs.map(doc => doc.data());
+        const allWishes = snapshot.docs.map(doc => doc.data());
+        const totalCount = allWishes.length;
+
+        // Slice wishes for the current page
+        const startIndex = (page - 1) * PAGE_SIZE;
+        const wishes = allWishes.slice(startIndex, startIndex + PAGE_SIZE);
         
         renderWishes(wishes);
         renderPagination(totalCount, page);
