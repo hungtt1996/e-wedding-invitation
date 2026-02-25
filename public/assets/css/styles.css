@@ -1,0 +1,214 @@
+@import url("common.css");
+@import url("animation.css");
+
+html {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+.with-scrollbar {
+    scrollbar-width: auto !important;
+    -ms-overflow-style: auto !important;
+}
+
+.font-esthetic {
+    font-family: 'Times New Roman', cursive !important;
+}
+
+.font-arabic {
+    font-family: 'Times New Roman', serif !important;
+}
+
+.img-center-crop {
+    width: 13rem;
+    height: 13rem;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+html[data-bs-theme="dark"] .btn-transparent {
+    background-color: rgba(var(--bs-dark-rgb), 0.5) !important;
+    backdrop-filter: blur(0.5rem);
+}
+
+html[data-bs-theme="light"] .btn-transparent {
+    background-color: rgba(var(--bs-light-rgb), 0.5) !important;
+    backdrop-filter: blur(0.5rem);
+}
+
+.loading-page {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1056;
+}
+
+html[data-bs-theme="light"] .color-theme-svg {
+    color: rgb(255, 255, 255);
+    background-color: var(--bs-light);
+}
+
+html[data-bs-theme="dark"] .color-theme-svg {
+    color: rgb(0, 0, 0);
+    background-color: var(--bs-dark);
+}
+
+html[data-bs-theme="light"] .bg-light-dark {
+    background-color: rgb(var(--bs-light-rgb));
+}
+
+html[data-bs-theme="dark"] .bg-light-dark {
+    background-color: rgb(var(--bs-dark-rgb));
+}
+
+html[data-bs-theme="light"] .bg-white-black {
+    background-color: rgb(var(--bs-white-rgb));
+}
+
+html[data-bs-theme="dark"] .bg-white-black {
+    background-color: rgb(var(--bs-black-rgb));
+}
+
+.bg-cover-home {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 25%;
+    mask-image: linear-gradient(0.5turn, transparent, black 40%, black 60%, transparent);
+}
+
+.width-loading {
+    width: 25%;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 992px) {
+    .width-loading {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .width-loading {
+        width: 75%;
+    }
+}
+
+svg {
+    display: block;
+    line-height: 0;
+    shape-rendering: geometricPrecision;
+    backface-visibility: hidden;
+}
+
+.svg-wrapper {
+    overflow: hidden !important;
+    transform: translateZ(0) !important;
+}
+
+.no-gap-bottom {
+    margin-bottom: -0.75rem !important;
+}
+
+#bg-img {
+    transition: opacity 0.5s ease;
+}
+
+/* ===== MAIN BACKGROUND CLEAN VERSION ===== */
+
+.main-bg {
+    position: relative;
+    background-image: url('../images/background.jfif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /*background-attachment: fixed; !* parallax nhẹ *!*/
+}
+
+/* Overlay toàn trang mobile */
+.main-bg::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.65); /* light mode */
+    backdrop-filter: blur(2px);
+    z-index: 0;
+}
+
+/* Dark mode */
+html[data-bs-theme="dark"] .main-bg::before {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* đảm bảo content nằm trên overlay */
+main > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== CALENDAR STYLES ===== */
+.calendar-container {
+    /*max-width: 320px;*/
+    margin: 0 auto;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1.5rem;
+    backdrop-filter: blur(5px);
+}
+
+.calendar-header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    text-align: center;
+}
+
+.calendar-day-name {
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: var(--bs-primary);
+    padding-bottom: 5px;
+}
+
+.calendar-day {
+    font-size: 0.9rem;
+    padding: 8px 0;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*.calendar-wedding-day {*/
+/*    background-color: rgba(220, 53, 69, 0.1);*/
+/*    color: #dc3545;*/
+/*    font-weight: bold;*/
+/*}*/
+
+.calendar-wedding-day::after {
+    content: '';
+    position: absolute;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23dc3545' d='M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.8;
+    z-index: -1;
+}
+
+html[data-bs-theme="dark"] .calendar-container {
+    background: rgba(0, 0, 0, 0.2);
+}
