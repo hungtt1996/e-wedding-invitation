@@ -151,12 +151,19 @@ main > * {
     z-index: 1;
 }
 
+.countdown-container {
+    /*background: rgb(245, 124, 124);*/
+    /*backdrop-filter: blur(5px);*/
+    color: red;
+    font-weight: bolder;
+}
+
 /* ===== CALENDAR STYLES ===== */
 .calendar-container {
     /*max-width: 320px;*/
     margin: 0 auto;
     padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.1);
+    background: #F5F0F0;
     border-radius: 1.5rem;
     backdrop-filter: blur(5px);
 }
@@ -176,7 +183,7 @@ main > * {
 .calendar-day-name {
     font-weight: bold;
     font-size: 0.8rem;
-    color: var(--bs-primary);
+    /*color: var(--bs-primary);*/
     padding-bottom: 5px;
 }
 
@@ -211,4 +218,8 @@ main > * {
 
 html[data-bs-theme="dark"] .calendar-container {
     background: rgba(0, 0, 0, 0.2);
+}
+
+.hour-party {
+    color: red;
 }
