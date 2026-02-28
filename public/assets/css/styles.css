@@ -214,6 +214,7 @@ main > * {
     background-position: center;
     opacity: 0.8;
     z-index: -1;
+    animation: heartbeat 1.5s infinite;
 }
 
 html[data-bs-theme="dark"] .calendar-container {
@@ -222,4 +223,21 @@ html[data-bs-theme="dark"] .calendar-container {
 
 .hour-party {
     color: red;
+}
+
+.heart-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 12px;
+    font-size: 1rem;
+    opacity: 0.8;
+    /*animation: heartbeat 1.5s infinite;*/
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.2); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.2); }
+    100% { transform: scale(1); }
 }

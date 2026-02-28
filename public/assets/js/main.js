@@ -171,6 +171,7 @@ const renderWishes = (wishes) => {
                 <small class="text-secondary" style="font-size: 0.75rem;">${wish.createdAt ? new Date(wish.createdAt.toDate()).toLocaleDateString('vi-VN') : 'Vừa xong'}</small>
             </div>
             <p class="m-0 text-secondary" style="font-size: 0.9rem; line-height: 1.5;">${wish.message}</p>
+            ${wish.reacted ? '<i class="fa-solid fa-heart text-danger ms-1 heart-icon"></i>' : '<i class="fa-regular fa-heart ms-1 heart-icon"></i>'}
         </div>
     `).join('');
     
